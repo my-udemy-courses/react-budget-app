@@ -48,6 +48,18 @@ export const editExpense = (id, updates) => ({
     updates
 })
 
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        // First update database
+        return database.ref(`expenses/${id}`).set({
+            ...updates
+        }).then(() => {
+            // then udpate redux store state
+            dispatch(editExpense(id, updates))
+        })
+    }
+}
+
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
     type: 'SET_EXPENSES',

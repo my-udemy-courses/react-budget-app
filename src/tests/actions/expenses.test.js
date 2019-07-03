@@ -7,7 +7,8 @@ import {
     editExpense, 
     setExpenses, 
     startSetExpenses, 
-    startRemoveExpense 
+    startRemoveExpense, 
+    startEditExpense
 } from '../../actions/expenses'
 import expenses from '../fixtures/expenses'
 import database from '../../firebase/firebase'
@@ -118,13 +119,32 @@ test('should fetch the expenses from database', async (done) => {
 test('should remove expense from database', async (done) => {
     const store = createMockStore({})
     await store.dispatch(startSetExpenses())
-    await store.dispatch(startRemoveExpense('1'))
+    await store.dispatch(startRemoveExpense(expenses[0].id))
     const actions = store.getActions()
     expect(actions[1]).toEqual({
         type: 'REMOVE_EXPENSE',
-        id: '1'
+        id: expenses[0].id
     })
-    const snapshot = await database.ref(`expenses/1`).once('value')
+    const snapshot = await database.ref(`expenses/${expenses[0].id}`).once('value')
     expect(snapshot.val()).toBeFalsy()
+    done()
+})
+
+test('should edit expense in database and store', async (done) => {
+    const store = createMockStore({})
+    await store.dispatch(startSetExpenses())
+    const updates = {
+        note: 'updated Note',
+        amount: 500,
+    }
+    await store.dispatch(startEditExpense(expenses[0].id, updates))
+    const actions = store.getActions()
+    expect(actions[1]).toEqual({
+        type: 'EDIT_EXPENSE',
+        id: expenses[0].id,
+        updates
+    })
+    const snapshot = await database.ref(`expenses/${expenses[0].id}`).once('value')
+    expect(snapshot.val().note).toBe(updates.note)
     done()
 })
