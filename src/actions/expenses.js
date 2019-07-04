@@ -8,7 +8,8 @@ export const addExpense = (expense) => ({
 })
 
 export const startAddExpense = (expenseData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             description = '',
             note = '',
@@ -16,9 +17,9 @@ export const startAddExpense = (expenseData = {}) => {
             createdAt = 0,
         } = expenseData
         const expense = { description, note, amount, createdAt }
-        
+
         // Returns Promise
-        return database.ref('expenses').push(expense).then((ref) => {
+        return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
             dispatch(addExpense({
                 id: ref.key,
                 ...expense
@@ -29,13 +30,14 @@ export const startAddExpense = (expenseData = {}) => {
 
 // REMOVE_EXPENSE
 export const removeExpense = (id) => ({
-    type: 'REMOVE_EXPENSE', 
+    type: 'REMOVE_EXPENSE',
     id
 })
 
 export const startRemoveExpense = (id) => {
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
             dispatch(removeExpense(id))
         })
     }
@@ -49,9 +51,10 @@ export const editExpense = (id, updates) => ({
 })
 
 export const startEditExpense = (id, updates) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         // First update database
-        return database.ref(`expenses/${id}`).set({
+        return database.ref(`users/${uid}/expenses/${id}`).set({
             ...updates
         }).then(() => {
             // then udpate redux store state
@@ -67,12 +70,13 @@ export const setExpenses = (expenses) => ({
 })
 
 export const startSetExpenses = () => {
-    return (dispatch) => {
-        // Fetch all expenses from db, then return promise
-        return database.ref('expenses').once('value').then((snapshot) => {
-            const expenses = [] 
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        // Fetch all expenses of the logged in user from db, then return promise
+        return database.ref(`users/${uid}/expenses`).once('value').then((snapshot) => {
+            const expenses = []
             snapshot.forEach((childSnapshot) => {
-                expenses.push({ 
+                expenses.push({
                     id: childSnapshot.key,
                     ...childSnapshot.val()
                 })
