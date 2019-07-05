@@ -2,23 +2,51 @@
 
 exports[`should render EditExpensePage 1`] = `
 <div>
-  <ExpenseForm
-    buttonLabel="Update Expense"
-    expense={
-      Object {
-        "amount": 195,
-        "createdAt": 0,
-        "description": "Gum",
-        "id": "1",
-        "note": "",
-      }
-    }
-    onSubmit={[Function]}
-  />
-  <button
-    onClick={[Function]}
+  <div
+    className="page-header"
   >
-    Remove Expense
-  </button>
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Ausgabe bearbeiten
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <ExpenseForm
+      buttonLabel="Speichern"
+      cancelButton={
+        <button
+          className="button button--dark-link"
+          onClick={[Function]}
+        >
+          Abbrechen
+        </button>
+      }
+      deleteButton={
+        <button
+          className="button button--secondary"
+          onClick={[Function]}
+        >
+          Löschen
+        </button>
+      }
+      expense={
+        Object {
+          "amount": 195,
+          "createdAt": 0,
+          "description": "Gum",
+          "id": "1",
+          "note": "",
+        }
+      }
+      onSubmit={[Function]}
+    />
+  </div>
 </div>
 `;

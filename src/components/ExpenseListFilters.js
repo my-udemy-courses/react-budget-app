@@ -19,7 +19,7 @@ export class ExpenseListFilters extends React.Component {
     }
     onSortChange = (e) => {
         const val = e.target.value
-                    
+
         if (val === 'date') {
             this.props.sortByDate()
         } else {
@@ -28,45 +28,54 @@ export class ExpenseListFilters extends React.Component {
     }
     render() {
         return (
-            <div>
-                <input 
-                    className="text-filter"
-                    type="text" 
-                    value={this.props.filters.text} 
-                    onChange={this.onTextChange}
-                />
-        
-                <select onChange={this.onSortChange}>
-                    <option value="date">Date</option>
-                    <option value="amount">Amount</option>
-                </select>
-        
-                <label>
-                    <input 
-                        className="sort-direction"
-                        type="checkbox" 
-                        id="ascending-checkbox" 
-                        onChange={(e) => {
-                            this.props.setDescending(!e.target.checked)
-                        }} 
-                        checked={!this.props.filters.descending}
-                    />
-                    Ascending
-                </label>
-        
-                <DateRangePicker
-                    startDate={this.props.filters.startDate}
-                    endDate={this.props.filters.endDate}
-                    onDatesChange={this.onDatesChange}
-                    focusedInput={this.state.calendarFocused}
-                    onFocusChange={this.onFocusChange}
-                    numberOfMonths={1}
-                    isOutsideRange={(date) => false}
-                    showClearDates={true}
-                />
-        
+            <div className="content-container">
+                <div className="input-group">
+                    <div className="input-group__item">
+                        <input
+                            className="text-input text-filter"
+                            type="text"
+                            placeholder="Textsuche"
+                            value={this.props.filters.text}
+                            onChange={this.onTextChange}
+                        />
+                    </div>
+                    <div className="input-group__item">
+                        <select
+                            className="select"
+                            onChange={this.onSortChange}>
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </select>
+                    </div>
+                    <div className="input-group__item">
+                        <label>
+                            <input
+                                className="sort-direction"
+                                type="checkbox"
+                                id="ascending-checkbox"
+                                onChange={(e) => {
+                                    this.props.setDescending(!e.target.checked)
+                                }}
+                                checked={!this.props.filters.descending}
+                            />
+                            Ascending
+                        </label>
+                    </div>
+                    <div className="input-group__item">
+                        <DateRangePicker
+                            startDate={this.props.filters.startDate}
+                            endDate={this.props.filters.endDate}
+                            onDatesChange={this.onDatesChange}
+                            focusedInput={this.state.calendarFocused}
+                            onFocusChange={this.onFocusChange}
+                            numberOfMonths={1}
+                            isOutsideRange={(date) => false}
+                            showClearDates={true}
+                        />
+                    </div>
+                </div>
             </div>
-        )        
+        )
     }
 }
 

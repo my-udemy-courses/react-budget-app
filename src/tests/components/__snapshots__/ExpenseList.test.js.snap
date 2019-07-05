@@ -1,38 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render expense list with empty message 1`] = `
-<div>
-  <p>
-    No expenses
-  </p>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Ausgaben
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Ausgabe
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Höhe
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        Keine Ausgaben
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`should render expense list with expenses 1`] = `
-<div>
-  <ExpenseListItem
-    amount={195}
-    createdAt={0}
-    description="Gum"
-    id="1"
-    key="1"
-    note=""
-  />
-  <ExpenseListItem
-    amount={15000}
-    createdAt={-345600000}
-    description="Water Bill"
-    id="2"
-    key="2"
-    note=""
-  />
-  <ExpenseListItem
-    amount={50000}
-    createdAt={345600000}
-    description="Credit Card"
-    id="3"
-    key="3"
-    note=""
-  />
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Ausgaben
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Ausgabe
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Höhe
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <ExpenseListItem
+      amount={195}
+      createdAt={0}
+      description="Gum"
+      id="1"
+      key="1"
+      note=""
+    />
+    <ExpenseListItem
+      amount={15000}
+      createdAt={-345600000}
+      description="Water Bill"
+      id="2"
+      key="2"
+      note=""
+    />
+    <ExpenseListItem
+      amount={50000}
+      createdAt={345600000}
+      description="Credit Card"
+      id="3"
+      key="3"
+      note=""
+    />
+  </div>
 </div>
 `;
