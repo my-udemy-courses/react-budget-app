@@ -19,7 +19,6 @@ export class ExpenseListFilters extends React.Component {
     }
     onSortChange = (e) => {
         const val = e.target.value
-
         if (val === 'date') {
             this.props.sortByDate()
         } else {
@@ -30,11 +29,11 @@ export class ExpenseListFilters extends React.Component {
         return (
             <div className="content-container">
                 <div className="input-group">
-                    <div className="input-group__item">
+                    <div className="input-group__item input-group__item--grow">
                         <input
                             className="text-input text-filter"
                             type="text"
-                            placeholder="Textsuche"
+                            placeholder="Textfilter"
                             value={this.props.filters.text}
                             onChange={this.onTextChange}
                         />
@@ -43,24 +42,11 @@ export class ExpenseListFilters extends React.Component {
                         <select
                             className="select"
                             onChange={this.onSortChange}>
-                            <option value="date">Date</option>
-                            <option value="amount">Amount</option>
+                            <option value="date">Neueste</option>
+                            <option value="amount">Teuerste</option>
                         </select>
                     </div>
-                    <div className="input-group__item">
-                        <label>
-                            <input
-                                className="sort-direction"
-                                type="checkbox"
-                                id="ascending-checkbox"
-                                onChange={(e) => {
-                                    this.props.setDescending(!e.target.checked)
-                                }}
-                                checked={!this.props.filters.descending}
-                            />
-                            Ascending
-                        </label>
-                    </div>
+
                     <div className="input-group__item">
                         <DateRangePicker
                             startDate={this.props.filters.startDate}

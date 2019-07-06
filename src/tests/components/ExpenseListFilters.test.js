@@ -4,11 +4,11 @@ import { shallow } from 'enzyme';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters'
 import { filters, altFilters } from '../fixtures/filters'
 
-let setTextFilter, 
-sortByDate, 
-sortByAmount, 
-setStartDate, 
-setEndDate, 
+let setTextFilter,
+sortByDate,
+sortByAmount,
+setStartDate,
+setEndDate,
 setDescending,
 wrapper
 
@@ -19,14 +19,15 @@ beforeEach(() => {
     setStartDate = jest.fn()
     setEndDate = jest.fn()
     setDescending = jest.fn()
-    wrapper = shallow(<ExpenseListFilters 
-        filters={filters}    
+    wrapper = shallow(<ExpenseListFilters
+        filters={filters}
         setTextFilter={setTextFilter}
         sortByDate={sortByDate}
         sortByAmount={sortByAmount}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
         setDescending={setDescending}
+        locale={'de'}
     />)
 })
 

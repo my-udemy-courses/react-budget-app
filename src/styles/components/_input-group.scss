@@ -1,7 +1,9 @@
 .input-group {
     display: flex;
-    margin-bottom: $m-size;
+    margin-bottom: $s-size;
+    margin-right: -$s-size;
     flex-direction: column;
+    justify-content: space-between;
 
     @media (min-width: $desktop-breakpoint) {
         flex-direction: row;
@@ -14,6 +16,13 @@
     margin-right: $s-size;
 
     @media (min-width: $desktop-breakpoint) {
-        margin: 0 $s-size 0 0;
+        // margin: 0;
     }
+    > * {
+        width: 100%;
+    }
+}
+
+.input-group__item--grow {
+    flex-grow: 1;
 }

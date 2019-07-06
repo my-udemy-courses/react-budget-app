@@ -17,6 +17,7 @@
 .button--dark-link {
     @extend .button--link;
     color: $blue;
+    border: 1px solid darken($off-white, 10%);
 }
 
 .button--secondary {

@@ -1,19 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import moment from 'moment'
+import 'react-dates/lib/css/_datepicker.css'
 import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { startSetExpenses } from './actions/expenses'
 import { login, logout } from './actions/auth'
-import moment from 'moment'
-import 'react-dates/lib/css/_datepicker.css'
+import getLocale from 'browser-locale'
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 import { firebase } from './firebase/firebase'
 import LoadingPage from './components/LoadingPage'
 
 const store = configureStore()
-moment.locale('de')
+moment.locale(getLocale())
+
 
 const jsx = (
     <Provider store={store}>

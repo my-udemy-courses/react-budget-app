@@ -8,12 +8,12 @@ exports[`should render ExpenseListFilters correctly 1`] = `
     className="input-group"
   >
     <div
-      className="input-group__item"
+      className="input-group__item input-group__item--grow"
     >
       <input
         className="text-input text-filter"
         onChange={[Function]}
-        placeholder="Textsuche"
+        placeholder="Textfilter"
         type="text"
         value=""
       />
@@ -28,28 +28,14 @@ exports[`should render ExpenseListFilters correctly 1`] = `
         <option
           value="date"
         >
-          Date
+          Neueste
         </option>
         <option
           value="amount"
         >
-          Amount
+          Teuerste
         </option>
       </select>
-    </div>
-    <div
-      className="input-group__item"
-    >
-      <label>
-        <input
-          checked={false}
-          className="sort-direction"
-          id="ascending-checkbox"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        Ascending
-      </label>
     </div>
     <div
       className="input-group__item"
@@ -150,12 +136,12 @@ exports[`should render ExpenseListFilters with alt data correctly 1`] = `
     className="input-group"
   >
     <div
-      className="input-group__item"
+      className="input-group__item input-group__item--grow"
     >
       <input
         className="text-input text-filter"
         onChange={[Function]}
-        placeholder="Textsuche"
+        placeholder="Textfilter"
         type="text"
         value="bills"
       />
@@ -170,28 +156,14 @@ exports[`should render ExpenseListFilters with alt data correctly 1`] = `
         <option
           value="date"
         >
-          Date
+          Neueste
         </option>
         <option
           value="amount"
         >
-          Amount
+          Teuerste
         </option>
       </select>
-    </div>
-    <div
-      className="input-group__item"
-    >
-      <label>
-        <input
-          checked={false}
-          className="sort-direction"
-          id="ascending-checkbox"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        Ascending
-      </label>
     </div>
     <div
       className="input-group__item"
